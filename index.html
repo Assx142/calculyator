@@ -21,12 +21,7 @@
       justify-content: space-between;
     }
     header .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
-    nav a {
-      color: #dce3f3;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
+    nav a { color: #dce3f3; text-decoration: none; margin-left: 20px; font-weight: 500; }
     nav a:hover { color: #fff; }
     main { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
     h1 { font-size: 1.9rem; margin-bottom: 6px; }
@@ -136,18 +131,18 @@
   </main>
 
   <script>
-    const PRICES = {
+    var PRICES = {
       pricePerLesson: { econom: 500, comfort: 800, intensive: 1100 },
-      durationMultiplier: { 45: 1, 60: 1.3, 90: 1.8 },
+      durationMultiplier: { 45: 1, 60: 1.3, 90: 1.8 }
     };
 
     function calc() {
-      const lessons = parseInt(document.getElementById('lessons').value, 10) || 0;
-      const duration = parseInt(document.getElementById('duration').value, 10) || 60;
-      const tariff = document.querySelector('input[name="tariff"]:checked')?.value || 'econom';
-      const base = PRICES.pricePerLesson[tariff] * PRICES.durationMultiplier[duration];
-      document.getElementById('result').textContent =
-        'Итоговая стоимость: ' + (lessons * base) + ' ₽';
+      var lessons = parseInt(document.getElementById('lessons').value, 10) || 0;
+      var duration = parseInt(document.getElementById('duration').value, 10) || 60;
+      var tariffEl = document.querySelector('input[name="tariff"]:checked');
+      var tariff = tariffEl ? tariffEl.value : 'econom';
+      var base = PRICES.pricePerLesson[tariff] * PRICES.durationMultiplier[duration];
+      document.getElementById('result').textContent = 'Итоговая стоимость: ' + (lessons * base) + ' ₽';
     }
 
     calc();
